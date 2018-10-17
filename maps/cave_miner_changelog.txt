@@ -1,3 +1,6 @@
+0.17
+Added void expansion
+
 0.16
 oil should no longer clutter
 increased rock destruction performance (maybe)

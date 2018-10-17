@@ -7,7 +7,7 @@ require "group"
 require "player_list"
 require "poll"
 require "score"
-require "rewards"
+--require "rewards"
 
 --require "maps.tools.cheat_mode"
 

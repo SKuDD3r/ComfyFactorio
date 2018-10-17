@@ -17,7 +17,9 @@ local darkness_messages = {
 		"They chitter as if laughing, hungry for their next foolish meal...",
 		"Despite what the radars tell you, it is not safe here...",
 		"The shadows are moving...",
-		"You feel like, something is watching you...",		
+		"You feel like, something is watching you...",
+		"I should stay in the light...",
+		"You feel something brush up against you..."	,	
 		}
 
 local rock_inhabitants = {
@@ -224,6 +226,32 @@ local function refresh_gui()
 	end
 end
 
+local function void_expansion(event)
+	local surface = game.surfaces[1]
+	local player = game.players[event.player_index]
+	if event.entity.stack.name == "cliff-explosives" then
+		local tile_list = {}
+		local radius = 7
+		local position = event.entity.position
+		local area = {left_top = {x = (position.x - radius), y = (position.y - radius)}, right_bottom = {x = (position.x + radius), y = (position.y + radius)}}
+		
+		for _, t in pairs(surface.find_tiles_filtered{area = area, name = "out-of-map"}) do
+			local distance = math.floor((position.x - t.position.x)^2 + (position.y - t.position.y)^2)
+			if (distance < radius) then
+				table.insert(tile_list, {name = "dirt-1", position = t.position})
+			end
+		end
+		
+		if #tile_list > 0 then 
+			for i=1, #tile_list, 1 do
+				surface.create_entity({name = "ground-explosion", position = tile_list[i].position})
+			end
+			surface.set_tiles(tile_list)
+			event.entity.destroy()
+		end
+	end
+end
+
 local function treasure_chest(position, distance_to_center)	
 	local math_random = math.random
 	local chest_raffle = {}
@@ -248,6 +276,7 @@ local function treasure_chest(position, distance_to_center)
 		{{name = "land-mine", count = math_random(16,32)}, weight = 8, evolution_min = 0.2, evolution_max = 0.7},
 		{{name = "grenade", count = math_random(16,32)}, weight = 8, evolution_min = 0.0, evolution_max = 0.5},
 		{{name = "cluster-grenade", count = math_random(16,32)}, weight = 5, evolution_min = 0.4, evolution_max = 1},
+		{{name = "cliff-explosives", count = math_random(4,16)}, weight = 8, evolution_min = 0.3, evolution_max = 1},
 		{{name = "firearm-magazine", count = math_random(32,128)}, weight = 5, evolution_min = 0, evolution_max = 0.3},
 		{{name = "piercing-rounds-magazine", count = math_random(32,128)}, weight = 5, evolution_min = 0.1, evolution_max = 0.8},
 		{{name = "uranium-rounds-magazine", count = math_random(32,128)}, weight = 5, evolution_min = 0.5, evolution_max = 1},
@@ -1261,6 +1290,9 @@ end
 local function on_research_finished(event)
 	game.forces.player.manual_mining_speed_modifier = game.forces.player.mining_drill_productivity_bonus * 6
 	game.forces.player.character_inventory_slots_bonus = game.forces.player.mining_drill_productivity_bonus * 500
+		if event.research.force.technologies["cliff-explosives"].enabled == true then
+			event.research.force.technologies["cliff-explosives"].enabled = false
+		end
 	refresh_gui()
 end
 
@@ -1306,3 +1338,4 @@ Event.add(defines.events.on_marked_for_deconstruction, on_marked_for_deconstruct
 Event.add(defines.events.on_chunk_generated, on_chunk_generated)
 Event.add(defines.events.on_tick, on_tick)	
 Event.add(defines.events.on_player_joined_game, on_player_joined_game)
+Event.add(defines.events.on_player_dropped_item, void_expansion)

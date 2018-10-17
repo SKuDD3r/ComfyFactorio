@@ -1,5 +1,5 @@
 0.17
-Added void expansion
+added new mechanic to expand into the void
 
 0.16
 oil should no longer clutter

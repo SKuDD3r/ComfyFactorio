@@ -9,6 +9,7 @@ local floor = math.floor
 local sqrt = math.sqrt
 local insert = table.insert
 
+
 local rewards_loot = {
 	[1] = {{name = "submachine-gun", count = 1, text = " Submachine Gun"}},
 	[2] = {{name = "defender-capsule", count = 20, text = " Defender-Bots"}},
@@ -19,7 +20,7 @@ local rewards_loot = {
 	[7] = {{name = "piercing-rounds-magazine", count = 400, text = " AP Rounds"}},
 	[8] = {{name = "piercing-shotgun-shell", count = 100, text = " AP Shotgun Shells"}},
 	[9] = {{name = "poison-capsule", count = 50, text = " Poison Capsule"}},
-	[10] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}},
+	[10] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
 	[11] = {{name = "modular-armor", count = 1, text = " Modular Armor"}, {name = "solar-panel-equipment", count = 2, text = " Portable Solar Panel"}, {name = "battery-equipment", count = 1, text = " MK1 Battery"}, {name = "night-vision-equipment", count = 1, text = " Night Vision Goggles"}},
 	[12] = {{name = "cluster-grenade", count = 20, text = " Cluster Grenades"}},
 	[13] = {{name = "rocket-launcher", count = 1, text = " Rocket Launcher"}, {name = "rocket", count = 100, text = " Rockets"}},
@@ -29,7 +30,7 @@ local rewards_loot = {
 	[17] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "land-mine", count = 20, text = " Landmines"}},
 	[18] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}},
 	[19] = {{name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}},
-	[20] = {{name = "power-armor", count = 1, text = " Power Armor MK1"}},
+	[20] = {{name = "power-armor", count = 1, text = " Power Armor MK1"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
 	[21] = {{name = "personal-roboport-equipment", count = 1, text = " Armor Roboport MK1"}, {name = "construction-robot", count = 10, text = " Construction-Bots"}},
 	[22] = {{name = "personal-laser-defense-equipment", count = 1, text = " Personal Laser Defense"}},
 	[23] = {{name = "rocket", count = 100, text = " Rockets"}, {name = "cluster-grenade", count = 20, text = " Cluster-Grenades"}},
@@ -39,7 +40,7 @@ local rewards_loot = {
 	[27] = {{name = "energy-shield-equipment", count = 2, text = " Energy Shield MK1"}, {name = "poison-capsule", count = 50, text = " Poison-Capsule"}},
 	[28] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}, {name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}},
 	[29] = {{name = "distractor-capsule", count = 40, text = " Distractor Bots"}},
-	[30] = {{name = "fusion-reactor-equipment", count = 1, text = " Fusion Reactor"}},
+	[30] = {{name = "fusion-reactor-equipment", count = 1, text = " Fusion Reactor"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
 	[31] = {{name = "uranium-rounds-magazine", count = 400, text = " Uranium Rounds"}},
 	[32] = {{name = "destroyer-capsule", count = 40, text = " Destroyer Bots"}},
 	[33] = {{name = "power-armor-mk2", count = 1, text = " Power Armor MK2"}},
@@ -48,7 +49,8 @@ local rewards_loot = {
 	[36] = {{name = "personal-roboport-mk2-equipment", count = 1, text = " Personal Roboport MK2"}},
 	[37] = {{name = "personal-laser-defense-equipment", count = 1, text = " Personal Laser Defense"}},
 	[38] = {{name = "fusion-reactor-equipment", count = 1, text = " Fusion Reactor"}},
-	[39] = {{name = "atomic-bomb", count = 10, text = " Atomic Rockets"}}
+	[39] = {{name = "atomic-bomb", count = 10, text = " Atomic Rockets"}},
+	[40] = {{name = "computer", count = 1, text = " Teleporter Computer"}}
 	}
 
 --Callback to trigger the player level

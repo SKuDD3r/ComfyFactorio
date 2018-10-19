@@ -92,7 +92,7 @@ local function kill_rewards(event)
 	local surface = player.surface
 	local center_position = surface.get_tile(player.position).position
 	local current_level = global.rewards[player.name].level
-	local next_level_score = ((3.5 + current_level+1)^1.2 / 10) * 100
+	local next_level_score = ((3.5 + current_level+1)^2.7 / 10) * 100
 	if kill_score >= next_level_score then
 		local next_level = current_level + 1
 		global.rewards[player.name].level = next_level

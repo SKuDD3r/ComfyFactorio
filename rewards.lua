@@ -9,48 +9,47 @@ local floor = math.floor
 local sqrt = math.sqrt
 local insert = table.insert
 
-
 local rewards_loot = {
-	[1] = {{name = "firearm-magazine", count = 100, text = " Rounds"}},
-	[2] = {{name = "submachine-gun", count = 1, text = " Submachine Gun"}, {name = "firearm-magazine", count = 100, text = " Rounds"}},
-	[3] = {{name = "firearm-magazine", count = 100, text = " Rounds"}},
-	[4] = {{name = "heavy-armor", count = 1, text = " Heavy Armor"}},
-	[5] = {{name = "grenade", count = 25, text = " Grenades"}},
-	[6] = {{name = "land-mine", count = 25, text = " Landmines"}},
-	[7] = {{name = "distractor-capsule", count = 20, text = " Distractor Bots"}},
-	[8] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}, {name = "piercing-shotgun-shell", count = 100, text = " AP Shotgun Shells"}},
-	[9] = {{name = "poison-capsule", count = 25, text = " Poison Capsule"}},
-	[10] = {{name = "raw-fish", count = 20, text = " Fish Food"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
-	[11] = {{name = "modular-armor", count = 1, text = " Modular Armor"}, {name = "solar-panel-equipment", count = 2, text = " Portable Solar Panel"}, {name = "battery-equipment", count = 1, text = " MK1 Battery"}, {name = "night-vision-equipment", count = 1, text = " Night Vision Goggles"}},
-	[12] = {{name = "cluster-grenade", count = 20, text = " Cluster Grenades"}},
-	[13] = {{name = "rocket-launcher", count = 1, text = " Rocket Launcher"}, {name = "rocket", count = 25, text = " Rockets"}},
-	[14] = {{name = "slowdown-capsule", count = 20, text = " Slowdown Capsule"}, {name = "piercing-rounds-magazine", count = 200, text = " AP Rounds"}},
+	[1] = {{name = "submachine-gun", count = 1, text = " Submachine Gun"}, {name = "firearm-magazine", count = 50, text = " SMG Rounds"}},
+	[2] = {{name = "heavy-armor", count = 1, text = " Heavy Armor"}, {name = "defender-capsule", count = 20, text = " Defender-Bots"}},
+	[3] = {{name = "firearm-magazine", count = 50, text = " SMG Rounds"}, {name = "grenade", count = 10, text = " Grenades"}},
+	[4] = {{name = "land-mine", count = 20, text = " Landmines"}, {name = "firearm-magazine", count = 100, text = " SMG Rounds"}},
+	[5] = {{name = "slowdown-capsule", count = 20, text = " Slowdown Capsules"}, {name = "poison-capsule", count = 20, text = " Poison Capsules"}},
+	[6] = {{name = "land-mine", count = 30, text = " Landmines"}, {name = "raw-fish", count = 30, text = " Fish Food"}},
+	[7] = {{name = "piercing-rounds-magazine", count = 50, text = " SMG AP Rounds"}, {name = "distractor-capsule", count = 20, text = " Distractor Capsules"}},
+	[8] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}, {name = "piercing-shotgun-shell", count = 50, text = " AP Shotgun Shells"}},
+	[9] = {{name = "poison-capsule", count = 40, text = " Poison Capsule"}, {name = "piercing-rounds-magazine", count = 100, text = " SMG AP Rounds"}},
+	[10] = {{name = "computer", count = 1, text = " Teleporter Computer"}, {name = "modular-armor", count = 1, text = " Modular Armor"}},
+	[11] = {{name = "solar-panel-equipment", count = 2, text = " Portable Solar Panel"}, {name = "battery-equipment", count = 1, text = " MK1 Battery"}, {name = "night-vision-equipment", count = 1, text = " Night Vision Goggles"}},
+	[12] = {{name = "cluster-grenade", count = 20, text = " Cluster Grenades"}, {name = "piercing-shotgun-shell", count = 100, text = " AP Shotgun Shells"}},
+	[13] = {{name = "flamethrower", count = 1, text = " Flamethrower"}, {name = "flamethrower-ammo", count = 50, text = " Flamethrower Rounds"}},
+	[14] = {{name = "slowdown-capsule", count = 30, text = " Slowdown Capsule"}, {name = "piercing-rounds-magazine", count = 200, text = " AP Rounds"}},
 	[15] = {{name = "battery-equipment", count = 2, text = " MK1 Battery"}, {name = "solar-panel-equipment", count = 4, text = " Portable Solar Panel"}},
-	[16] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "cluster-grenade", count = 25, text = " Cluster Grenades"}},
-	[17] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "land-mine", count = 25, text = " Landmines"}},
-	[18] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}},
-	[19] = {{name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}},
+	[16] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "cluster-grenade", count = 20, text = " Cluster Grenades"}, {name = "flamethrower-ammo", count = 50, text = " Flamethrower Rounds"}},
+	[17] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "land-mine", count = 50, text = " Landmines"}, {name = "piercing-rounds-magazine", count = 200, text = " AP Rounds"}},
+	[18] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}, {name = "raw-fish", count = 50, text = " Fish Food"}},
+	[19] = {{name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}, {name = "rocket-launcher", count = 1, text = " Rocket Launcher"}, {name = "rocket", count = 10, text = " Rockets"}},
 	[20] = {{name = "power-armor", count = 1, text = " Power Armor MK1"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
 	[21] = {{name = "personal-roboport-equipment", count = 1, text = " Armor Roboport MK1"}, {name = "construction-robot", count = 10, text = " Construction-Bots"}},
-	[22] = {{name = "personal-laser-defense-equipment", count = 1, text = " Personal Laser Defense"}},
-	[23] = {{name = "rocket", count = 100, text = " Rockets"}, {name = "cluster-grenade", count = 20, text = " Cluster-Grenades"}},
-	[24] = {{name = "explosive-rocket", count = 100, text = " Explosive Rockets"}, {name = "piercing-rounds-magazine", count = 400, text = " AP Rounds"}},
+	[22] = {{name = "personal-laser-defense-equipment", count = 1, text = " Personal Laser Defense"}, {name = "flamethrower-ammo", count = 100, text = " Flamethrower Rounds"}},
+	[23] = {{name = "rocket", count = 40, text = " Rockets"}, {name = "cluster-grenade", count = 20, text = " Cluster-Grenades"}},
+	[24] = {{name = "explosive-rocket", count = 40, text = " Explosive Rockets"}, {name = "piercing-rounds-magazine", count = 200, text = " AP Rounds"}},
 	[25] = {{name = "land-mine", count = 50, text = " Landmines"}, {name = "solar-panel-equipment", count = 2, text = " Portable Solar Panel"}},
-	[26] = {{name = "flamethrower", count = 1, text = " Flamethrower"}, {name = "flamethrower-ammo", count = 100, text = " Flamethrower Rounds"}},
+	[26] = {{name = "uranium-rounds-magazine", count = 100, text = " Uranium Rounds"}},
 	[27] = {{name = "energy-shield-equipment", count = 2, text = " Energy Shield MK1"}, {name = "poison-capsule", count = 50, text = " Poison-Capsule"}},
 	[28] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}, {name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}},
-	[29] = {{name = "distractor-capsule", count = 40, text = " Distractor Bots"}},
+	[29] = {{name = "distractor-capsule", count = 40, text = " Distractor Bots"}, {name = "personal-laser-defense-equipment", count = 2, text = " Personal Laser Defense"}},
 	[30] = {{name = "fusion-reactor-equipment", count = 1, text = " Fusion Reactor"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
-	[31] = {{name = "uranium-rounds-magazine", count = 400, text = " Uranium Rounds"}},
-	[32] = {{name = "destroyer-capsule", count = 40, text = " Destroyer Bots"}},
+	[31] = {{name = "uranium-rounds-magazine", count = 200, text = " Uranium Rounds"}, {name = "destroyer-capsule", count = 40, text = " Destroyer Capsules"}},
+	[32] = {{name = "destroyer-capsule", count = 50, text = " Destroyer Bots"}},
 	[33] = {{name = "power-armor-mk2", count = 1, text = " Power Armor MK2"}},
-	[34] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskeleton"}},
+	[34] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskeleton"}, {name = "uranium-rounds-magazine", count = 200, text = " Uranium Rounds"}},
 	[35] = {{name = "energy-shield-mk2-equipment", count = 1, text = " Energy Shield MK2"}},
 	[36] = {{name = "personal-roboport-mk2-equipment", count = 1, text = " Personal Roboport MK2"}},
-	[37] = {{name = "personal-laser-defense-equipment", count = 1, text = " Personal Laser Defense"}},
-	[38] = {{name = "fusion-reactor-equipment", count = 1, text = " Fusion Reactor"}},
+	[37] = {{name = "personal-laser-defense-equipment", count = 2, text = " Personal Laser Defense"}},
+	[38] = {{name = "fusion-reactor-equipment", count = 2, text = " Fusion Reactor"}, {name = "uranium-rounds-magazine", count = 400, text = " Uranium Rounds"}},
 	[39] = {{name = "atomic-bomb", count = 10, text = " Atomic Rockets"}},
-	[40] = {{name = "computer", count = 1, text = " Teleporter Computer"}}
+	[40] = {{name = "computer", count = 2, text = " Teleporter Computer"}, {name = "uranium-rounds-magazine", count = 500, text = " Uranium Rounds"}}
 	}
 
 local function create_reward_button(player)		
@@ -188,7 +187,7 @@ local function kill_rewards(event)
 	local surface = player.surface
 	local center_position = surface.get_tile(player.position).position
 	local current_level = global.rewards[player.name].level
-	local next_level_score = ((3.5 + current_level+1)^1.2 / 10) * 100
+	local next_level_score = ((3.5 + current_level+1)^2.7 / 10) * 100
 	if kill_score >= next_level_score then
 		local next_level = current_level + 1
 		global.rewards[player.name].level = next_level

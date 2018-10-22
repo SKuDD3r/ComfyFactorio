@@ -11,23 +11,23 @@ local insert = table.insert
 
 
 local rewards_loot = {
-	[1] = {{name = "submachine-gun", count = 1, text = " Submachine Gun"}},
-	[2] = {{name = "defender-capsule", count = 20, text = " Defender-Bots"}},
-	[3] = {{name = "shotgun", count = 1, text = " Shotgun"}, {name = "shotgun-shell", count = 100, text = " Shotgun Shells"}},
+	[1] = {{name = "firearm-magazine", count = 100, text = " Rounds"}},
+	[2] = {{name = "submachine-gun", count = 1, text = " Submachine Gun"}, {name = "firearm-magazine", count = 100, text = " Rounds"}},
+	[3] = {{name = "firearm-magazine", count = 100, text = " Rounds"}},
 	[4] = {{name = "heavy-armor", count = 1, text = " Heavy Armor"}},
-	[5] = {{name = "grenade", count = 50, text = " Grenades"}},
-	[6] = {{name = "land-mine", count = 50, text = " Landmines"}},
-	[7] = {{name = "piercing-rounds-magazine", count = 400, text = " AP Rounds"}},
-	[8] = {{name = "piercing-shotgun-shell", count = 100, text = " AP Shotgun Shells"}},
-	[9] = {{name = "poison-capsule", count = 50, text = " Poison Capsule"}},
-	[10] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
+	[5] = {{name = "grenade", count = 25, text = " Grenades"}},
+	[6] = {{name = "land-mine", count = 25, text = " Landmines"}},
+	[7] = {{name = "distractor-capsule", count = 20, text = " Distractor Bots"}},
+	[8] = {{name = "combat-shotgun", count = 1, text = " Combat Shotgun"}, {name = "piercing-shotgun-shell", count = 100, text = " AP Shotgun Shells"}},
+	[9] = {{name = "poison-capsule", count = 25, text = " Poison Capsule"}},
+	[10] = {{name = "raw-fish", count = 20, text = " Fish Food"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
 	[11] = {{name = "modular-armor", count = 1, text = " Modular Armor"}, {name = "solar-panel-equipment", count = 2, text = " Portable Solar Panel"}, {name = "battery-equipment", count = 1, text = " MK1 Battery"}, {name = "night-vision-equipment", count = 1, text = " Night Vision Goggles"}},
 	[12] = {{name = "cluster-grenade", count = 20, text = " Cluster Grenades"}},
-	[13] = {{name = "rocket-launcher", count = 1, text = " Rocket Launcher"}, {name = "rocket", count = 100, text = " Rockets"}},
-	[14] = {{name = "slowdown-capsule", count = 20, text = " Slowdown Capsule"}, {name = "piercing-rounds-magazine", count = 400, text = " AP Rounds"}},
+	[13] = {{name = "rocket-launcher", count = 1, text = " Rocket Launcher"}, {name = "rocket", count = 25, text = " Rockets"}},
+	[14] = {{name = "slowdown-capsule", count = 20, text = " Slowdown Capsule"}, {name = "piercing-rounds-magazine", count = 200, text = " AP Rounds"}},
 	[15] = {{name = "battery-equipment", count = 2, text = " MK1 Battery"}, {name = "solar-panel-equipment", count = 4, text = " Portable Solar Panel"}},
-	[16] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "cluster-grenade", count = 20, text = " Cluster Grenades"}},
-	[17] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "land-mine", count = 20, text = " Landmines"}},
+	[16] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "cluster-grenade", count = 25, text = " Cluster Grenades"}},
+	[17] = {{name = "energy-shield-equipment", count = 1, text = " Energy Shield MK1"}, {name = "land-mine", count = 25, text = " Landmines"}},
 	[18] = {{name = "exoskeleton-equipment", count = 1, text = " Exoskelet"}},
 	[19] = {{name = "battery-mk2-equipment", count = 1, text = " Armor Battery Mk2"}},
 	[20] = {{name = "power-armor", count = 1, text = " Power Armor MK1"}, {name = "computer", count = 1, text = " Teleporter Computer"}},
@@ -188,7 +188,7 @@ local function kill_rewards(event)
 	local surface = player.surface
 	local center_position = surface.get_tile(player.position).position
 	local current_level = global.rewards[player.name].level
-	local next_level_score = ((3.5 + current_level+1)^2.7 / 10) * 100
+	local next_level_score = ((3.5 + current_level+1)^1.2 / 10) * 100
 	if kill_score >= next_level_score then
 		local next_level = current_level + 1
 		global.rewards[player.name].level = next_level

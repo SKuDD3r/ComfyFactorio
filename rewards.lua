@@ -99,7 +99,7 @@ local function show_rewards(player)
 	local t = frame.add { type = "table", column_count = 1}
 	
 	if kill_score then value = ((kill_score - min_score)/(floor(next_level_score)-min_score)) end
-	local l = t.add { type = "progressbar", value = value, caption = "test"}
+	local l = t.add { type = "progressbar", value = value}
 	l.style.font = "default-bold"
 	l.style.font_color = { r=0.9, g=0.9, b=0.9}
 	l.style.minimal_width = 123
